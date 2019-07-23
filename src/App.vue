@@ -4,7 +4,11 @@
     
 
 <ul id="progress">
-    <li v-for="stage in stages" v-bind:key="stage.name" :id="stage.name" :title="stage.name"   >{{stage.name}}</li>
+    <li v-for="(stage,index) in stages" v-bind:key="stage.name" :id="stage.name" :title="stage.name"   >
+      <span>({{index+1}})</span>
+      {{stage.name}}
+
+    </li>
     <!-- <li class="active">Step 2</li>
     <li>Step 3</li> -->
 </ul>
@@ -15,14 +19,14 @@ export default {
   data() {
     return {
       stages: [
-        { name: "Stage 1", active: false },
-        { name: "Stage 2", active: true },
-        { name: "Stage 3", active: false },
-        { name: "Stage 3", active: false },
-        { name: "Stage 3", active: false },
-        { name: "Stage 3", active: false },
-        { name: "Stage 3", active: false },
-        { name: "Stage 3", active: false }
+        { name: "Stage ", active: false },
+        { name: "Stage ", active: true },
+        { name: "Stage ", active: false },
+        { name: "Stage ", active: false },
+        { name: "Stage ", active: false },
+        { name: "Stage ", active: false },
+        { name: "Stage ", active: false },
+        { name: "Stage ", active: false }
       ]
     };
   }
@@ -48,7 +52,9 @@ export default {
     background: #98ca9d;
 
 }
- 
+ #progress li span{
+   float: left;
+ }
 
 #progress li {
     float: left;

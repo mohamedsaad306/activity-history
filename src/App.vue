@@ -1,31 +1,99 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+   
+    
+
+<ul id="progress">
+    <li v-for="stage in stages" v-bind:key="stage.name" :id="stage.name" :title="stage.name"   >{{stage.name}}</li>
+    <!-- <li class="active">Step 2</li>
+    <li>Step 3</li> -->
+</ul>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      stages: [
+        { name: "Stage 1", active: false },
+        { name: "Stage 2", active: true },
+        { name: "Stage 3", active: false },
+        { name: "Stage 3", active: false },
+        { name: "Stage 3", active: false },
+        { name: "Stage 3", active: false },
+        { name: "Stage 3", active: false },
+        { name: "Stage 3", active: false }
+      ]
+    };
+  }
+};
+</script>
 
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
+<style> 
+ 
+
+ 
+#progress {
+    padding: 0;
+    list-style-type: none;
+    font-family: arial;
+    font-size: 12px;
+    clear: both;
+    line-height: 1em;
+    margin: 0 -1px;
+    text-align: center;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+#progress li:hover{
+    background: #98ca9d;
+
+}
+ 
+
+#progress li {
+    float: left;
+    padding: 10px 30px 10px 40px;
+    background: #d4ead7;
+    color: black;
+    position: relative;
+    border-top: 1px solid #d4ead7;
+    border-bottom: 1px solid #d4ead7;
+    width: 10%;
+    margin: 3px;
+    
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+#progress li:before {
+    content: '';
+    border-left: 16px solid #fff;
+    border-top: 16px solid transparent;
+    border-bottom: 16px solid transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+}
+#progress li:hover:after {
+    border-left-color: #98ca9d;
+
+}
+#progress li:after {
+    content: '';
+    border-left: 16px solid #d4ead7;
+    border-top: 16px solid transparent;
+    border-bottom: 16px solid transparent;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    z-index: 20;
+    
+}
+
+#progress li.active {
+    background: #98ca9d;
+}
+
+#progress li.active:after {
+    border-left-color: #98ca9d;
 }
 </style>

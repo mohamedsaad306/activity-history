@@ -4,8 +4,8 @@
     
 
 <ul id="progress">
-    <li v-for="(stage,index) in stages" v-bind:key="stage.name" :id="stage.name" :title="stage.name"   >
-      <span>({{index+1}})</span>
+    <li v-for="(stage,index) in stages" v-bind:key="stage.name" :id="stage.name" :title="stage.title" v-on:click="StageSelected"  >
+      <span>({{index+1}}) </span>
       {{stage.name}}
 
     </li>
@@ -18,17 +18,26 @@
 export default {
   data() {
     return {
+      selectedIndex:-1, 
       stages: [
-        { name: "Stage ", active: false },
-        { name: "Stage ", active: true },
-        { name: "Stage ", active: false },
-        { name: "Stage ", active: false },
-        { name: "Stage ", active: false },
-        { name: "Stage ", active: false },
-        { name: "Stage ", active: false },
-        { name: "Stage ", active: false }
+        { name: "Stage1 ", active: false  , isSelected : false , title : "Alt Message "},
+        { name: "Stage2 ", active: true },
+        { name: "Stage3 ", active: false },
+        { name: "Stage4 ", active: false },
+        { name: "Stage5 ", active: false },
+        { name: "Stage6 ", active: false },
+        { name: "Stage7 ", active: false },
+        { name: "Stage8 ", active: false }
       ]
     };
+  }, 
+  methods:{
+    StageSelected(arg,el){
+      console.log('Selected this', this)
+      console.log('Selected args ', arg)
+      console.log('Selected el ', el)
+
+    },
   }
 };
 </script>
